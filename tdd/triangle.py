@@ -15,5 +15,5 @@ we've been able to make
 
 def is_valid_triangle(side_1: int, side_2: int, side_3: int) -> bool:
     sorted_sides = sorted([side_1, side_2, side_3])
-    return sorted_sides[2] <= sorted_sides[0] + sorted_sides[1]
+    return sorted_sides[2] < sorted_sides[0] + sorted_sides[1]
 
