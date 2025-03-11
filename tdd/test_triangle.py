@@ -13,4 +13,5 @@ def test_is_valid_triangle_wrong_number_sides():
 
 def test_is_valid_triangle_string_params():
     with pytest.raises(TypeError):
+        
         is_valid_triangle("2", 2, 5)
