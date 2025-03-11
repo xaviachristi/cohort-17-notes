@@ -2,6 +2,7 @@ def raise_error():
     return 5/0
 
 def user_raises_error():
+    """LOL RSING ERS"""
     raise EnvironmentError("There are no windows!!!")
 
 def user_raises_error_but_different_message():
