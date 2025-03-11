@@ -19,7 +19,7 @@ def does_it_all(s:str) -> str:
 
 def main():
     # This does everything
-    ...
+    pass
 
 
 if __name__ == "__main__":
