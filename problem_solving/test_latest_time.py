@@ -13,5 +13,8 @@ def test_get_first_digit_returns_one():
 def test_get_first_digit_returns_two():
     assert get_first_digit([9, 1, 2, 5]) == 2
 
-@pytest.mark.parametrize(["first", "second", "third", "fourth"], 
-                         ())
+@pytest.mark.parametrize("digits,second,expected", 
+                         [([9, 1, 5], 2, 5),
+                          ([9, 8, 3], 1, 9)])
+def test_get_second_digit_returns_five(digits, second, expected):
+    assert get_second_digit(digits, second) == expected
