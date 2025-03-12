@@ -1,0 +1,9 @@
+def get_first_digit(digits: list[int]) -> int:
+    ...
+
+def get_second_digit(digits: list[int], first_digit: int) -> int:
+    ...
+
+def get_third_digit(digits: list[int]) -> int:
+    ...
+
