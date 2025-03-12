@@ -66,3 +66,26 @@ Notes
 
 Result should be a valid 24-hour time, between 00:00 and 23:59.
 Only inputs which have valid answers are tested.
+
+### Algorithm
+
+Set of instructions
+
+A procedure used to solve a problem or a description of a process to arrive at an outcome/solution.
+
+
+
+Hour - 2 digits
+
+0, 1, 2
+
+0-9
+IF first digit is 0 or 1
+
+ELSE 0-3
+
+Minutes - 2 digits
+
+0-5
+
+0-9
