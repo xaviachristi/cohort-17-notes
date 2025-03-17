@@ -15,7 +15,7 @@ def get_prefix(word: str) -> str:
     return word[:word.index("-")]
 
 
-def get_length_of_user_input():
+def get_length_of_user_input() -> int:
     """Returns the length of the user input."""
 
     return len(input())
@@ -28,4 +28,5 @@ def display_ascii_gift(gift: str) -> None:
 
 if __name__ == "__main__":
 
-    display_ascii_gift("yellow")
+    PREFIXED_WORD = "trans-siberian"
+    print(get_prefix(PREFIXED_WORD))
