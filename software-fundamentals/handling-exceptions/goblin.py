@@ -8,7 +8,8 @@ class Goblin:
 
     def __init__(self, name: str, favourite_colour: str, speed: int):
 
-     
+        self.validate_goblin()
+
         self.name = name
         self.favourite_colour = favourite_colour
         self.speed = speed
@@ -22,7 +23,6 @@ class Goblin:
             raise ValueError("Invalid goblin favourite colour.")
         return True
         
-
     def run(self, distance: int) -> None:
         """Flees in terror."""
         if distance > self.speed:
