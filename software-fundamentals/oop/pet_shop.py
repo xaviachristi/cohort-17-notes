@@ -7,9 +7,9 @@ class Dog:
     def bark(self) -> None:
         if self.weight > 100:
             print("WOOF!")
-        else: 
+        else:
             print("woof")
-    
+
     def get_age(self) -> int:
         return self.__age
 
@@ -20,30 +20,41 @@ class Dog:
         if new_age - self.__age != 1:
             raise ValueError("You are not a time traveling dog")
         self.__age = new_age
-    
-    def eat(self):
-        """When this is called, print a message to the 
-        
-        For this method - eating before 8am and after 7pm should raise an error. 
+
+    def eat(self, time):
+        """When this is called, print a message to the
+
+        For this method - eating before 8am and after 7pm should raise an error.
         Write some tests to ensure this works correctly by creating new dates.
         """
+        if time < 8 or time > 19:
+            raise ValueError("Wrong time to eat, buddy!")
+        print("Dog has been fed")
         ...
 
-class Cat:
-    def __init__(self, name, age, weight):
-        pass
 
-    def eat(self):
-         """When this is called, print a message to the 
-        
-        For this method - eating before 8am and after 7pm should raise an error. 
+class Cat:
+    def __init__(self, name: str, age: int, weight: int):
+        self.name = name
+        self.age = age
+        self.weight = weight
+
+    def eat(self, time):
+         """When this is called, print a message to the
+
+        For this method - eating before 8am and after 7pm should raise an error.
         Write some tests to ensure this works correctly by creating new dates.
         """
+        if time<8 or time>19:
+            raise ValueError("Wrong time to eat, buddy!")
+        print("Cat has been fed.")
         ...
 
 class Hamster:
     def __init__(self, name, age, weight):
-        pass
+        self.name = name
+        self.age = age
+        self.weight = weight
 
     def eat(self):
          """When this is called, print a message to the 
@@ -51,13 +62,16 @@ class Hamster:
         For this method - eating before 8am and after 7pm should raise an error. 
         Write some tests to ensure this works correctly by creating new dates.
         """
+        if time<8 or time>19:
+            raise ValueError("Wrong time to eat, buddy!")
+        print("Hamster has been fed.")
         ...
 
 
 class PetStore:
     def __init__(self, animal_list: list[Dog]):
         if len(animal_list) > 9:
-            raise ValueError("Too cute, to much! Can't handle it!")
+            raise ValueError("Too cute, too much! Can't handle it!")
 
         self.__animal_list = animal_list  # private variables __
         # Python renames __animal_list to something else
@@ -85,21 +99,43 @@ class PetStore:
         return dog_list
     
     def get_cats(self):
-        ...
+        """Gets cats"""
+        cat_list = []
+        for pet in self.__animal_list:
+            if isinstance(pet, Cat):
+                cat_list.append(pet)
+        return (cat_list)
     
     def get_hamsters(self):
-        ...
+        """Gets hamsters"""
+        hamster_list = []
+        for pet in self.__animal_list:
+            if isinstance(pet, Hamster):
+                hamster_list.append(pet)
+        return (hamster_list)
 
     def get_dogs(self):
-        ...
+        """Gets dogs"""
+        dog_list = []
+        for pet in self.__animal_list:
+            if isinstance(pet, dog):
+                dog_list.append(pet)
+        return (dog_list)
 
 fluffy = Dog("Fluffy", 10, 12)
+
+miko = Cat("Miko", 10, 10)
+
+print(miko.eat(9))
 
 print(fluffy.get_age())
 
 fluffy.set_age(13)
 
-store = PetStore([fluffy])
+store = PetStore([fluffy, miko])
 
 print(store.pets_for_sale())
 
+print(store.get_dogs())
+
+print([cat.name for cat in store.get_cats()])
