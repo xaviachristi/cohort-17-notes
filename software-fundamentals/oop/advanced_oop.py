@@ -11,7 +11,7 @@ Abstract class: A class that is not instantiated, but used to define other class
     - Guarentees that all subclasses contains the methods inside of it
 """
 from datetime import datetime, timedelta
-from abc import ABC, abstractmethod
+from abc import ABC, abstractmethod, abstractclassmethod
 
 class Animal(ABC):
     def __init__(self, name, age):
@@ -27,6 +27,20 @@ class Animal(ABC):
     def make_sound(self):
         pass
 
+class Food(ABC):
+    def __init__(self, name):
+        self.name = name
+    
+    @staticmethod
+    def from_string(food_string: str):
+        name, food_type = food_string.split(",")
+        if food_type == "Burger":
+            return Burger(name)
+        pass
+
+class Burger(Food):
+    def __init__(self, name):
+        super().__init__(name)
 class Person(Animal):
     species = "Homo Sapien"
 
@@ -94,7 +108,7 @@ if __name__ == "__main__":
     print(lando.species)
     print(merino.age)
     merino.breathe()
-    gobbles = Goblin("Svalberd", "Not an age")
+    # gobbles = Goblin("Svalberd", "Not an age")
     # Say the user is TERRIBLE and we HATE them
     # unpredictable_name = input("Give me a name pls: ")
     # age = input("Gib age pls: ")
