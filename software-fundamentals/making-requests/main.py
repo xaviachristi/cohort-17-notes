@@ -10,7 +10,7 @@ def get_user_repo_count(username: str) -> int:
         raise TypeError("Function expects a string.")
 
     res = req.get(f"https://api.github.com/users/{username}")
-    
+
     if res.status_code >= 500:
         raise Exception("Unable to contact API!")
     elif res.status_code == http.HTTPStatus(404):
