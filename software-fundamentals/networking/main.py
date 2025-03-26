@@ -34,5 +34,8 @@ def get_arguments() -> Namespace:
     ...
 
 if __name__ == "__main__":
+    # Users can search for relevant anime by providing a query argument
+    # Users can pass an argument to control the number of results returned (default 5)
+    # Users can use a flag to include adult content in the results (default to not including it)
 
     raise NotImplementedError("You need to write the code!")
