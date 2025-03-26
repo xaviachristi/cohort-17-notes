@@ -30,6 +30,8 @@ def display_results(results: list[dict]) -> None:
     for r in results:
         display_anime_data(r)
 
+def get_arguments() -> Namespace:
+    ...
 
 if __name__ == "__main__":
 
