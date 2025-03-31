@@ -63,7 +63,6 @@ def company_random():
     """Returns a random company's details."""
     return choice(companies)   
 
-def delete_company:
 """
 Write an endpoint that will let the user delete a company. 
 The data is of type list.
