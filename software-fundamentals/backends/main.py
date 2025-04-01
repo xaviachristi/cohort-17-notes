@@ -32,7 +32,7 @@ def company_index():
             return companies
 
     if request.method == "POST":
-        new_company = json.loads(request.data)
+        new_company = json.loads(request.data) # request.json
         if not is_valid_company(new_company):
             return {"Error": True, "message": "Not a valid company"}, 400
         company_id = max(company.get("id") for company in companies) + 1
@@ -45,8 +45,10 @@ def company_index():
         companies.append(company_to_add)
         return company_to_add, 201
 
+
 def is_valid_company(company: dict) -> bool:
     return all(key.lower() in company for key in ["name", "country"])
+
 
 @api.route("/company/<int:id>", methods=["GET"])
 def company_show(id: int):
@@ -64,6 +66,13 @@ def company_random():
     return choice(companies)   
 
 """
+/ceo (GET, POST)
+/ceo/id (GET, PATCH, DELETE)
+
+"""
+
+
+"""
 Write an endpoint that will let the user delete a company. 
 The data is of type list.
 
@@ -74,6 +83,7 @@ http://127.0.0.1:5000/companies/212
 should delete the company with the id equal to 212
 """
 ...
+
 
 if __name__ == "__main__":
 
