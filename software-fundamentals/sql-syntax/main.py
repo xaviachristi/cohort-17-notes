@@ -16,10 +16,13 @@ def get_database_cursor(conn: connection) -> cursor:
 def search_movie(conn: connection, search: str) -> dict:
     with get_database_cursor(conn) as curs:
         curs.execute(
-            f"SELECT title, budget, overview, popularity FROM movies WHERE title ILIKE %{search}%;"
+            "SELECT title, budget, overview, popularity FROM movies WHERE title ILIKE '%%s%';",
+            [search]
             )
         rows = curs.fetchall()
     return rows
+
+"api/movies/;DROP DATABASE movies;"
 
 def load_all_movies(conn: connection) -> list[dict]:
     with get_database_cursor(conn) as curs:
