@@ -1,5 +1,4 @@
--- QUERIES GO HERE
-\c jurassic_park
+
 -- GET species where the scientific name has rex
 SELECT * 
 FROM species 
