@@ -22,7 +22,6 @@ def search_movie(conn: connection, search: str) -> dict:
     return rows
 
 def load_all_movies(conn: connection) -> list[dict]:
-
     with get_database_cursor(conn) as curs:
         curs.execute(
             "SELECT title, budget, overview, popularity FROM movies;"
@@ -35,6 +34,8 @@ def load_all_movies(conn: connection) -> list[dict]:
 def movies():
     with get_database_connection() as conn:
         return load_all_movies(conn), 200
+
+# Extra challenge: pagination
 
 if __name__ == "__main__":
     app.run(port=8080, debug=True)
