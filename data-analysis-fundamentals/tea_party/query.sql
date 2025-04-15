@@ -44,3 +44,4 @@ ORDER BY pl.planet_name, rank_within_planet;
 -- I want to economize on my tea consumption. 
 -- For each planet, I want to know the party that serves the most different types of tea.
 -- Additionally, I want to know the average rating of these parties to ensure I'm attending high-quality events.
+-- https://mode.com/sql-tutorial/sql-window-functions
