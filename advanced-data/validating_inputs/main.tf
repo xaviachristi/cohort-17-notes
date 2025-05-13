@@ -12,10 +12,34 @@ data "aws_db_subnet_group" "subnet-group" {
     name = "c17-public-subnet-group"
 }
 
+resource "aws_security_group" "c17-example-sg" {
+  name   = "c17-example-sg"
+  vpc_id = data.aws_vpc.current-vpc.id
+
+}
+
+resource "aws_vpc_security_group_ingress_rule" "ec2-inbound-rule" {
+    security_group_id = aws_security_group.c17-example-sg.id
+    cidr_ipv4   = "0.0.0.0/0"
+    from_port   = 5432
+    ip_protocol = "tcp"
+    to_port     = 5432
+}
+
+resource "aws_vpc_security_group_egress_rule" "example" {
+  security_group_id = aws_security_group.c17-example-sg.id
+    cidr_ipv4   = "0.0.0.0/0"
+    from_port   = 5432
+    ip_protocol = "tcp"
+    to_port     = 5432
+}
+
 resource "aws_instance" "example" {
   ami           = "ami-0dfe0f1abee59c78d"
   instance_type = "t2.nano"
   subnet_id     = data.aws_db_subnet_group.subnet-group.id
+  associate_public_ip_address = true
+  security_groups = [aws_security_group.c17-example-sg.name]
 
   cpu_options {
     core_count       = 1
