@@ -8,8 +8,8 @@ data "aws_vpc" "current-vpc" {
     id = "vpc-00b3f6b2893c390f2"
 }
 
-data "aws_ec2_subnet_group" "subnet-group" {
-    name = "c17-public-subnet-group"
+data "aws_subnet" "ec2-subnet" {
+  id = var.AWS_SUBNET
 }
 
 resource "aws_security_group" "c17-example-sg" {
@@ -37,7 +37,7 @@ resource "aws_vpc_security_group_egress_rule" "example" {
 resource "aws_instance" "example" {
   ami           = "ami-0dfe0f1abee59c78d"
   instance_type = "t2.nano"
-  subnet_id     = data.aws_db_subnet_group.subnet-group.id
+  subnet_id     = data.aws_subnet.ec2-subnet.id
   associate_public_ip_address = true
   security_groups = [aws_security_group.c17-example-sg.name]
 
