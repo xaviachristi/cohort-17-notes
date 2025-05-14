@@ -8,7 +8,7 @@ data "aws_vpc" "current-vpc" {
     id = "vpc-00b3f6b2893c390f2"
 }
 
-data "aws_db_subnet_group" "subnet-group" {
+data "aws_ec2_subnet_group" "subnet-group" {
     name = "c17-public-subnet-group"
 }
 
